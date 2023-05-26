@@ -8,7 +8,7 @@ Start Back-End first on port:3000
 ```
 npm run start:dev
 ```
-Then strt Front-End:
+Then start Front-End:
 ```
 npm start
 ```
