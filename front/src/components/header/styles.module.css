@@ -1,0 +1,12 @@
+.headerWrap {
+  background-color: #222222;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.headerTitle {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+}

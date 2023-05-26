@@ -1,0 +1,11 @@
+.imgSetWrap {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+.deleteImg {
+  cursor: pointer;
+  text-align: center;
+}
