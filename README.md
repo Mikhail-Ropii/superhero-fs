@@ -16,4 +16,5 @@ for execution Jest Tests on Back End part:
 ```
 npm run test 
 ```
-P.S. I was trying to use less library and write my own solutions (pagination, modal window and so on).
+P.S. 1. I was trying to use less library and write my own solutions (pagination, modal window and so on). 
+2. Usually I use .env for points of entering, api keys... to keep this information from being made public. But in this case I duplicated it in main code. Just in case:)
