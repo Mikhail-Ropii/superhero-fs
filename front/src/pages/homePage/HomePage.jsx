@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+//Components
 import { MainButton } from "../../components/mainButton/MainButton";
 import { Modal } from "../../components/modal/Modal";
 import { HeroForm } from "../../components/heroForm/HeroForm";
@@ -36,8 +38,16 @@ export const HomePage = () => {
     setIsOpenModal(true);
   };
 
-  const handleRemoveHero = (id) => {
-    removeHero(id);
+  const handleRemoveHero = async (id) => {
+    try {
+      const res = await removeHero(id);
+      if (res.error) {
+        throw new Error(res.error);
+      }
+      toast.success("Superhero deleted");
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
 
   const resetId = () => {

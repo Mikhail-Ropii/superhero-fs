@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import css from "./styles.module.css";
 import {
   useAddNewHeroMutation,
@@ -24,6 +25,15 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
   const [file, setFile] = useState(null);
   const [imgSet, setImgSet] = useState([]);
   const [isFormValid, setIsFormValid] = useState(true);
+
+  const heroObject = {
+    nickname,
+    realName,
+    description,
+    superpowers,
+    catchPhrase,
+    imgSet,
+  };
 
   const resetForm = () => {
     setNickname("");
@@ -80,8 +90,7 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
     }
   }, [data]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     if (
       nickname.trim() !== "" &&
       realName.trim() !== "" &&
@@ -91,27 +100,28 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
     ) {
       setIsFormValid(true);
       if (heroId) {
-        const updatedHero = {
-          nickname,
-          realName,
-          description,
-          superpowers,
-          catchPhrase,
-          imgSet,
-        };
-        updateHero({
-          updatedHero,
-          heroId,
-        });
+        try {
+          const res = await updateHero({
+            heroObject,
+            heroId,
+          });
+          if (res.error) {
+            throw new Error(res.error);
+          }
+          toast.success("Superhero updated");
+        } catch (error) {
+          toast.error("Something went wrong");
+        }
       } else {
-        addNewHero({
-          nickname,
-          realName,
-          description,
-          superpowers,
-          catchPhrase,
-          imgSet,
-        });
+        try {
+          const res = await addNewHero(heroObject);
+          if (res.error) {
+            throw new Error(res.error);
+          }
+          toast.success("Superhero created");
+        } catch (error) {
+          toast.error("Something went wrong");
+        }
       }
       resetId();
       resetForm();

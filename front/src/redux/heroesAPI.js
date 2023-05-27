@@ -44,10 +44,10 @@ export const heroesAPI = createApi({
     }),
 
     updateHero: builder.mutation({
-      query: ({ updatedHero, heroId }) => ({
+      query: ({ heroObject, heroId }) => ({
         url: `/api/heroes/${heroId}`,
         method: "PUT",
-        body: updatedHero,
+        body: heroObject,
       }),
       invalidatesTags: ["hero"],
     }),
