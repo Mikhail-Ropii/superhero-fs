@@ -6,7 +6,7 @@ npm install
 ```
 Start Back-End first on port:3000
 ```
-npm run start:dev
+npm start / npm run start:dev
 ```
 Then start Front-End:
 ```
