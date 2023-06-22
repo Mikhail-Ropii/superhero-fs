@@ -1,8 +1,8 @@
 import css from "./styles.module.css";
 
-export const MainButton = ({ children }) => {
+export const MainButton = ({ children, onClick }) => {
   return (
-    <div className={css.btnWrap}>
+    <div onClick={onClick} className={css.btnWrap}>
       <div className={css.addBtn}>{children}</div>
     </div>
   );

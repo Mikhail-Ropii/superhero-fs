@@ -56,8 +56,10 @@ export const HomePage = () => {
 
   return (
     <>
-      <div onClick={() => setIsOpenModal(true)}>
-        <MainButton>Add Superhero</MainButton>
+      <div>
+        <MainButton onClick={() => setIsOpenModal(true)}>
+          Add Superhero
+        </MainButton>
       </div>
       <Modal
         resetId={resetId}

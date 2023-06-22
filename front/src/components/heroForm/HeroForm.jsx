@@ -224,8 +224,8 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
         </div>
       </div>
       <div>
-        <div onClick={handleSubmit}>
-          <MainButton>Save</MainButton>
+        <div>
+          <MainButton onClick={handleSubmit}>Save</MainButton>
         </div>
         {!isFormValid && <p className={css.invalidMsg}>Fill all fields!</p>}
       </div>

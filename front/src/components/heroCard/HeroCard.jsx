@@ -35,11 +35,11 @@ export const HeroCard = ({ item, onEdit, onDelete }) => {
             <MainButton>More</MainButton>
           </Link>
         </div>
-        <div onClick={() => onEdit(item._id)} className={css.btn}>
-          <MainButton>Edit</MainButton>
+        <div className={css.btn}>
+          <MainButton onClick={() => onEdit(item._id)}>Edit</MainButton>
         </div>
-        <div onClick={() => onDelete(item._id)} className={css.btn}>
-          <RemoveBtn>Delete</RemoveBtn>
+        <div className={css.btn}>
+          <RemoveBtn onClick={() => onDelete(item._id)}>Delete</RemoveBtn>
         </div>
       </div>
     </div>
