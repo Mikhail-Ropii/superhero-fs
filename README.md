@@ -6,6 +6,10 @@ npm install
 ```
 Start Back-End first on port:3000
 ```
+npm start
+```
+or
+```
 npm run start:dev
 ```
 Then start Front-End:
@@ -16,5 +20,5 @@ for execution Jest Tests on Back End part:
 ```
 npm run test 
 ```
-P.S. 1. I was trying to use less library and write my own solutions (pagination, modal window and so on). 
+P.S. 1. I tried to use less libraries and write my own solutions (pagination, modal window and so on). 
 2. Usually I use .env for points of entering, api keys... to keep this information from being made public. But in this case I duplicated it in main code. Just in case:)
