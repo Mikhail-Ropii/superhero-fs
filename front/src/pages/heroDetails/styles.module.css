@@ -1,3 +1,10 @@
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 .imagesWrap {
   display: grid;
   justify-items: center;

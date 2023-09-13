@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import css from "./styles.module.css";
 //Components
 import { MainButton } from "../../components/mainButton/MainButton";
 import { Modal } from "../../components/modal/Modal";
-import { HeroForm } from "../../components/heroForm/HeroForm";
+import { AddHeroForm } from "../../components/addHeroForm/AddHeroForm";
+import { EditHeroForm } from "../../components/editHeroForm/EditHeroForm";
 import { HeroList } from "../../components/heroList/HeroList";
 
 import {
@@ -13,7 +15,8 @@ import {
 import { Pagination } from "../../components/pagination/Pagination";
 
 export const HomePage = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isAddModalOpen, setisAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [idForEditing, setIdForEditing] = useState(null);
   const { data } = useGetAllHeroesQuery(page);
@@ -35,7 +38,7 @@ export const HomePage = () => {
 
   const handleEditBtn = (id) => {
     setIdForEditing(id);
-    setIsOpenModal(true);
+    setIsEditModalOpen(true);
   };
 
   const handleRemoveHero = async (id) => {
@@ -56,19 +59,22 @@ export const HomePage = () => {
 
   return (
     <>
-      <div>
-        <MainButton onClick={() => setIsOpenModal(true)}>
+      <div className={css.btnWrap}>
+        <MainButton onClick={() => setisAddModalOpen(true)}>
           Add Superhero
         </MainButton>
       </div>
-      <Modal
-        resetId={resetId}
-        isOpen={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
-      >
-        <HeroForm
-          onClose={setIsOpenModal}
-          isOpenModal={isOpenModal}
+      <Modal isOpen={isAddModalOpen} onClose={() => setisAddModalOpen(false)}>
+        <AddHeroForm
+          onClose={setisAddModalOpen}
+          isOpenModal={isAddModalOpen}
+          heroId={idForEditing}
+        />
+      </Modal>
+      <Modal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
+        <EditHeroForm
+          onClose={setIsEditModalOpen}
+          isOpenModal={isEditModalOpen}
           heroId={idForEditing}
           resetId={resetId}
         />

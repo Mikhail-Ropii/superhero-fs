@@ -1,7 +1,7 @@
 const { Hero } = require("../../models/hero");
 
 const getAllHeroes = async (req, res, next) => {
-  const { page = 1 } = req.params;
+  const { page = 1 } = req.query;
   const limit = 5;
   const skip = (page - 1) * limit;
   const result = await Hero.find().skip(skip).limit(Number(limit));

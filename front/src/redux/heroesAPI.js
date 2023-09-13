@@ -21,7 +21,7 @@ export const heroesAPI = createApi({
 
     uploadImg: builder.mutation({
       query: (img) => ({
-        url: "/api/heroes/img",
+        url: "/api/heroes/images",
         method: "POST",
         body: img,
       }),
@@ -37,8 +37,9 @@ export const heroesAPI = createApi({
 
     getAllHeroes: builder.query({
       query: (page) => ({
-        url: `/api/heroes/all/${page}`,
+        url: "/api/heroes/",
         method: "GET",
+        params: { page },
       }),
       providesTags: ["hero"],
     }),

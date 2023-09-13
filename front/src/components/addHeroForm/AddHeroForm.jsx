@@ -3,19 +3,15 @@ import { toast } from "react-toastify";
 import css from "./styles.module.css";
 import {
   useAddNewHeroMutation,
-  useUpdateHeroMutation,
   useUploadImgMutation,
-  useLazyGetHeroByIdQuery,
 } from "../../redux/heroesAPI";
 
 //Components
 import { ImgList } from "../imgList/ImgList";
 import { MainButton } from "../mainButton/MainButton";
 
-export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
+export const AddHeroForm = ({ onClose, isOpenModal }) => {
   const [addNewHero] = useAddNewHeroMutation();
-  const [updateHero] = useUpdateHeroMutation();
-  const [getHeroById, { data: heroData }] = useLazyGetHeroByIdQuery();
   const [uploadImg, { data }] = useUploadImgMutation();
   const [nickname, setNickname] = useState("");
   const [realName, setRealName] = useState("");
@@ -45,35 +41,10 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
   };
 
   useEffect(() => {
-    if (heroId) {
-      getHeroById(heroId);
-    }
-  }, [heroId, getHeroById]);
-
-  useEffect(() => {
     if (!isOpenModal) {
       resetForm();
     }
   }, [isOpenModal]);
-
-  useEffect(() => {
-    if (heroData) {
-      const {
-        catchPhrase,
-        description,
-        imgSet,
-        nickname,
-        realName,
-        superpowers,
-      } = heroData;
-      setNickname(nickname);
-      setRealName(realName);
-      setDescription(description);
-      setSuperpowers(superpowers);
-      setCatchPhrase(catchPhrase);
-      setImgSet(imgSet);
-    }
-  }, [heroData]);
 
   const handlUploadImg = (e) => {
     e.preventDefault();
@@ -86,7 +57,7 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
 
   useEffect(() => {
     if (data) {
-      setImgSet((prev) => [...prev, data]);
+      setImgSet((prev) => [...prev, data.url]);
     }
   }, [data]);
 
@@ -99,31 +70,15 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
       catchPhrase.trim() !== ""
     ) {
       setIsFormValid(true);
-      if (heroId) {
-        try {
-          const res = await updateHero({
-            heroObject,
-            heroId,
-          });
-          if (res.error) {
-            throw new Error(res.error);
-          }
-          toast.success("Superhero updated");
-        } catch (error) {
-          toast.error("Something went wrong");
+      try {
+        const res = await addNewHero(heroObject);
+        if (res.error) {
+          throw new Error(res.error);
         }
-      } else {
-        try {
-          const res = await addNewHero(heroObject);
-          if (res.error) {
-            throw new Error(res.error);
-          }
-          toast.success("Superhero created");
-        } catch (error) {
-          toast.error("Something went wrong");
-        }
+        toast.success("Superhero created");
+      } catch (error) {
+        toast.error("Something went wrong");
       }
-      resetId();
       resetForm();
       onClose();
     } else {
@@ -224,7 +179,7 @@ export const HeroForm = ({ onClose, heroId, isOpenModal, resetId }) => {
         </div>
       </div>
       <div>
-        <div>
+        <div className={css.btnWrap}>
           <MainButton onClick={handleSubmit}>Save</MainButton>
         </div>
         {!isFormValid && <p className={css.invalidMsg}>Fill all fields!</p>}

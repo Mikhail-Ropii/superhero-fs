@@ -19,6 +19,7 @@
 
 .btnWrap {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .btn:not(:last-child) {
@@ -31,4 +32,5 @@
 
   color: #212121;
   margin-top: 5px;
+  margin-bottom: 10px;
 }

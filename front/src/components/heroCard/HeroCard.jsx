@@ -19,7 +19,7 @@ export const HeroCard = ({ item, onEdit, onDelete }) => {
         ) : (
           <img
             className={css.photo}
-            src={`${BASE_URL}/${item.imgSet[0]}`}
+            src={item.imgSet[0]}
             alt="Hero"
           />
         )}

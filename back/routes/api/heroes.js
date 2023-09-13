@@ -6,11 +6,11 @@ const { schemas } = require("../../models/hero");
 
 const router = express.Router();
 
-router.get("/all/:page", ctrlWrapper(ctrl.getAllHeroes));
+router.get("/", ctrlWrapper(ctrl.getAllHeroes));
 
 router.get("/:heroId", isValidId, ctrlWrapper(ctrl.getHeroById));
 
-router.post("/img", upload.single("img"), ctrlWrapper(ctrl.uploadImg));
+router.post("/images", upload.single("img"), ctrlWrapper(ctrl.uploadImg));
 
 router.post("/", validation(schemas.add), ctrlWrapper(ctrl.addHero));
 

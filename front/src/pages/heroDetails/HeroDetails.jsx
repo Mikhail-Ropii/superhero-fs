@@ -26,15 +26,15 @@ export const HeroDetails = () => {
 
   return (
     <>
-      <div onClick={handleGoBack}>
-        <MainButton>Go back</MainButton>
+      <div className={css.btnWrap}>
+        <MainButton onClick={handleGoBack}>Go back</MainButton>
       </div>
       <p className={css.title}>Information about Superhero</p>
       <ul className={css.imagesWrap}>
         {data && imgSet.length !== 0 ? (
           imgSet.map((item) => (
             <li key={item}>
-              <img src={`${BASE_URL}/${item}`} alt="Hero" />
+              <img src={item} alt="Hero" />
             </li>
           ))
         ) : (

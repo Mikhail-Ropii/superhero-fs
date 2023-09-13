@@ -9,7 +9,6 @@ const errorMassage = {
 const createError = (status, massage = errorMassage[status]) => {
   const error = new Error(massage);
   error.status = status;
-  console.log(error);
   return error;
 };
 

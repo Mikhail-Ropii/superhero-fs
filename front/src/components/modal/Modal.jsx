@@ -1,11 +1,10 @@
 import { useState } from "react";
 import css from "./styles.module.css";
 
-export const Modal = ({ isOpen, onClose, children, resetId }) => {
+export const Modal = ({ isOpen, onClose, children }) => {
   const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = () => {
-    resetId();
     setIsClosing(true);
     setTimeout(() => {
       setIsClosing(false);
