@@ -1,9 +1,8 @@
-const { Hero } = require("../../models/hero");
+const data = require("../../data");
 const { createError } = require("../../helpers/createError");
 
 const getHeroById = async (req, res, next) => {
-  const { heroId } = req.params;
-  const result = await Hero.findById(heroId);
+  const result = await data.getHeroById(req);
   if (!result) {
     throw createError(404);
   }

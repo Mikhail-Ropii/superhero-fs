@@ -12,6 +12,22 @@
   column-gap: 17px;
   row-gap: 17px;
   margin-bottom: 10px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(1, 2fr);
+  }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+.img {
+  @media (max-width: 767px) {
+    max-width: 280px;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    max-width: 350px;
+  }
 }
 
 .title {
@@ -22,6 +38,10 @@
 
   color: #212121;
   margin-bottom: 10px;
+
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
 }
 
 .line {

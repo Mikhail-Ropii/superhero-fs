@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 //Components
 import { MainButton } from "../../components/mainButton/MainButton";
 import { Modal } from "../../components/modal/Modal";
@@ -87,7 +87,12 @@ export const HomePage = () => {
         />
       )}
 
-      <Pagination onPagePlus={pagePlus} onPageMinus={pageMinus} />
+      <Pagination
+        onPagePlus={pagePlus}
+        onPageMinus={pageMinus}
+        hasMore={hasMore}
+        page={page}
+      />
     </>
   );
 };

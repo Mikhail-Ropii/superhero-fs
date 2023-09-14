@@ -1,14 +1,7 @@
-const { Hero } = require("../../models/hero");
+const data = require("../../data");
 
 const getAllHeroes = async (req, res, next) => {
-  const { page = 1 } = req.query;
-  const limit = 5;
-  const skip = (page - 1) * limit;
-  const result = await Hero.find().skip(skip).limit(Number(limit));
-  const totalHeroesCount = await Hero.countDocuments();
-  const remainingHeroesCount = totalHeroesCount - (skip + limit);
-  const hasMore = remainingHeroesCount > 0;
-
+  const { result, hasMore } = await data.getAllHeroes(req);
   res.json({ result, hasMore });
 };
 

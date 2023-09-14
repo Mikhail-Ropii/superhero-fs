@@ -1,9 +1,8 @@
-const { Hero } = require("../../models/hero");
+const data = require("../../data");
 const { createError } = require("../../helpers/createError");
 
 const removeHero = async (req, res, next) => {
-  const { heroId } = req.params;
-  const result = await Hero.findByIdAndRemove(heroId);
+  const result = await data.removeHero(req);
   if (!result) {
     throw createError(404);
   }

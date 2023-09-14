@@ -1,7 +1,7 @@
-const { Hero } = require("../../models/hero");
+const data = require("../../data");
 
 const addHero = async (req, res, next) => {
-  const result = await Hero.create(req.body);
+  const result = await data.addHero(req);
   res.status(201).json(result);
 };
 

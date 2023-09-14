@@ -1,11 +1,7 @@
-const { Hero } = require("../../models/hero");
+const data = require("../../data");
 
 const updateHero = async (req, res, next) => {
-  const { heroId } = req.params;
-
-  const result = await Hero.findByIdAndUpdate(heroId, req.body, {
-    new: true,
-  });
+  const result = await data.updateHero(req);
   res.json(result);
 };
 

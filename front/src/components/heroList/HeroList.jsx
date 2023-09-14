@@ -1,4 +1,4 @@
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 import { HeroCard } from "../heroCard/HeroCard";
 
 export const HeroList = ({ data, onEdit, onDelete }) => {

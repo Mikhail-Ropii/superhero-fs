@@ -9,4 +9,8 @@
   font-style: normal;
   font-weight: 700;
   font-size: 38px;
+
+  @media (max-width: 767px) {
+    font-size: 25px;
+  }
 }

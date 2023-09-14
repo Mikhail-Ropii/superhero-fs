@@ -1,6 +1,12 @@
 .container {
   min-width: 60vw;
   display: flex;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: none;
+  }
 }
 
 .form {
@@ -53,6 +59,12 @@
   margin-bottom: 10px;
   text-align: center;
   font-weight: 700;
+}
+
+.imgWrap{
+  @media (max-width: 767px) {
+    margin-bottom: 10px;
+  }
 }
 
 .invalidMsg {

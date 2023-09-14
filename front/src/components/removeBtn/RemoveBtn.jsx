@@ -1,4 +1,4 @@
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 
 export const RemoveBtn = ({ children, onClick }) => {
   return (

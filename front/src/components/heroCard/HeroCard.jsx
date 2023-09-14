@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-import { BASE_URL } from "../../baseURL";
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 import nophoto from "../../img/nophoto.jpg";
 
 //Components
@@ -17,11 +16,7 @@ export const HeroCard = ({ item, onEdit, onDelete }) => {
         {item.imgSet.length === 0 ? (
           <img className={css.photo} src={nophoto} alt="Hero" />
         ) : (
-          <img
-            className={css.photo}
-            src={item.imgSet[0]}
-            alt="Hero"
-          />
+          <img className={css.photo} src={item.imgSet[0]} alt="Hero" />
         )}
       </div>
       <p className={css.heroName}>{item.nickname}</p>

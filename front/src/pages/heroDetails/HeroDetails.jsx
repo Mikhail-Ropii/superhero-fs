@@ -1,9 +1,8 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { MainButton } from "../../components/mainButton/MainButton";
 import { useGetHeroByIdQuery } from "../../redux/heroesAPI";
-import { BASE_URL } from "../../baseURL";
 
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 import nophoto from "../../img/nophoto.jpg";
 
 export const HeroDetails = () => {
@@ -34,7 +33,7 @@ export const HeroDetails = () => {
         {data && imgSet.length !== 0 ? (
           imgSet.map((item) => (
             <li key={item}>
-              <img src={item} alt="Hero" />
+              <img className={css.img} src={item} alt="Hero" />
             </li>
           ))
         ) : (

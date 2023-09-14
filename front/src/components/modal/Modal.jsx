@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 
 export const Modal = ({ isOpen, onClose, children }) => {
   const [isClosing, setIsClosing] = useState(false);

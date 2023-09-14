@@ -1,8 +1,0 @@
-.listWrap {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 17px;
-  row-gap: 17px;
-  justify-items: center;
-  margin-bottom: 10px;
-}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import css from "./styles.module.css";
+import css from "./styles.module.scss";
 import {
   useAddNewHeroMutation,
   useUploadImgMutation,
@@ -169,7 +169,7 @@ export const AddHeroForm = ({ onClose, isOpenModal }) => {
             </button>
           </form>
         </div>
-        <div>
+        <div className={css.imgWrap}>
           <p className={css.imgTitle}>Superhero images</p>
           {imgSet.length !== 0 ? (
             <ImgList onDelImg={handleDelImg} imgSet={imgSet} />
