@@ -4,7 +4,7 @@ Install required dependencies in both parts:
 ```
 npm install
 ```
-Start Back-End first on port:3000
+Start Back-End on port 3001 (default value)
 ```
 npm start
 ```
